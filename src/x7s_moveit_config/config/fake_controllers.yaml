@@ -1,0 +1,75 @@
+controller_list:
+  - name: fake_left_arm_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - joint5
+      - joint6
+      - joint7
+      - joint8
+      - joint9
+      - joint10
+      - joint11
+  - name: fake_right_arm_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - joint14
+      - joint15
+      - joint16
+      - joint17
+      - joint18
+      - joint19
+      - joint20
+  - name: fake_left_gripper_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - joint12
+      - joint13
+  - name: fake_right_gripper_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - joint21
+      - joint22
+  - name: fake_body_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - joint1
+      - joint2
+  - name: fake_head_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - joint3
+      - joint4
+  - name: fake_mobile_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - virtual_joint
+  - name: fake_bimanual_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - joint14
+      - joint15
+      - joint16
+      - joint17
+      - joint18
+      - joint19
+      - joint20
+      - joint21
+      - joint22
+      - joint5
+      - joint6
+      - joint7
+      - joint8
+      - joint9
+      - joint10
+      - joint11
+      - joint12
+      - joint13
+initial:  # Define initial robot poses per group
+  - group: left_arm
+    pose: ready_pose_left_arm
+  - group: right_arm
+    pose: ready_pose_right_arm
+  - group: body
+    pose: ready_pose_body
+  - group: head
+    pose: ready_pose_head

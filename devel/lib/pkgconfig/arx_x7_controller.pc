@@ -1,0 +1,8 @@
+prefix=/home/glab/wbcd_ws/devel
+
+Name: arx_x7_controller
+Description: Description of arx_x7_controller
+Version: 0.0.0
+Cflags: -I/home/glab/wbcd_ws/src/ARX_x7_ros/arx_x7_controller/include
+Libs: -L${prefix}/lib 
+Requires: arm_control arx5_arm_msg roscpp std_msgs

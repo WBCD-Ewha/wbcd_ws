@@ -1,0 +1,8 @@
+prefix=/home/glab/wbcd_ws/devel
+
+Name: x7s_control
+Description: Description of x7s_control
+Version: 0.2.3
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

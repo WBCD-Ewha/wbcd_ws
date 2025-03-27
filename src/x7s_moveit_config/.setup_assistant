@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: x7s_description
+    relative_path: urdf/x7s.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/x7s.srdf
+  CONFIG:
+    author_name: hjlee
+    author_email: hahjinlee@ewha.ac.kr
+    generated_timestamp: 1743067247

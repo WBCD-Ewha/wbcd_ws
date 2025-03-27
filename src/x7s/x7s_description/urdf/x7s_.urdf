@@ -1,0 +1,864 @@
+<?xml version="1.0" ?>
+<robot name="x7s">
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-0.061403 0.00062999 0.18169" rpy="0 0 0"/>
+      <mass value="27.286"/>
+      <inertia ixx="0.51606" ixy="-0.00060411" ixz="-0.00076332" iyy="0.56068" iyz="5.3841e-05" izz="0.50182"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/base_link.STL"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/base_link.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="link1">
+    <inertial>
+      <origin xyz="-0.010805 -0.00069779 -0.059694" rpy="0 0 0"/>
+      <mass value="6.205"/>
+      <inertia ixx="0.0075822" ixy="-1.0541e-05" ixz="0.00034261" iyy="0.015409" iyz="-8.4814e-06" izz="0.010585"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link1.STL"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link1.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint1" type="prismatic">
+    <origin xyz="0.096 0.0 0.31" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="link1"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="0.0" upper="0.54" effort="100.0" velocity="1000.0"/>
+  </joint>
+  <transmission name="joint1_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint1_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="link2">
+    <inertial>
+      <origin xyz="-0.0007795788354002 0.053760645280584 0.220464314501233" rpy="0 0 0"/>
+      <mass value="3.01262653552798"/>
+      <inertia ixx="0.0070265616419609" ixy="-3.15452136826617e-07" ixz="-5.52102673615499e-05" iyy="0.0053770334844437" iyz="-1.18921006378622e-06" izz="0.004097439482158"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link2.STL"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link2.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint2" type="revolute">
+    <origin xyz="0.066 -0.0546 -0.06" rpy="0 0 0"/>
+    <parent link="link1"/>
+    <child link="link2"/>
+    <axis xyz="0 -1 0"/>
+    <limit lower="-10.0" upper="10.0" effort="100.0" velocity="1000.0"/>
+  </joint>
+  <transmission name="joint2_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint2_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="link3">
+    <inertial>
+      <origin xyz="-1.2166451790474e-08 0.0001551010868359 0.0414775143344981" rpy="0 0 0"/>
+      <mass value="0.429406588376073"/>
+      <inertia ixx="0.0001779237127023" ixy="-5.15411046372102e-12" ixz="-6.62734884686356e-08" iyy="0.0002015864373776" iyz="-2.20264495475333e-05" izz="0.0001558855691714"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link3.STL"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link3.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint3" type="revolute">
+    <origin xyz="0.0 0.0544 0.356" rpy="0 0 0"/>
+    <parent link="link2"/>
+    <child link="link3"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-10.0" upper="10.0" effort="100.0" velocity="1000.0"/>
+  </joint>
+  <transmission name="joint3_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint3">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint3_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="link4">
+    <inertial>
+      <origin xyz="0.0145474612596931 0.0229595215513494 0.0787914285814235" rpy="0 0 0"/>
+      <mass value="1.54420437039843"/>
+      <inertia ixx="0.0054108389849829" ixy="9.09937267257334e-05" ixz="-0.0002001448738721" iyy="0.0043008039413723" iyz="-5.16669203970193e-05" izz="0.0074993444938229"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link4.STL"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link4.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint4" type="revolute">
+    <origin xyz="0.0 -0.025 0.049" rpy="0 0 0"/>
+    <parent link="link3"/>
+    <child link="link4"/>
+    <axis xyz="0 -1 0"/>
+    <limit lower="-10.0" upper="10.0" effort="100.0" velocity="1000.0"/>
+  </joint>
+  <transmission name="joint4_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint4">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint4_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="link5">
+    <inertial>
+      <origin xyz="0.0203118776657915 0.0282074621926044 -0.0001728036753247" rpy="0 0 0"/>
+      <mass value="0.131891884746085"/>
+      <inertia ixx="0.0001222374924625" ixy="-3.79784054979192e-05" ixz="-4.62936177981665e-07" iyy="9.0391090861752e-05" iyz="-5.40326311415964e-07" izz="0.0001374888512206"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link5.STL"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link5.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint5" type="revolute">
+    <origin xyz="0.0 0.1424 0.28" rpy="0 0 0"/>
+    <parent link="link2"/>
+    <child link="link5"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-10.0" upper="10.0" effort="100.0" velocity="1000.0"/>
+  </joint>
+  <transmission name="joint5_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint5">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint5_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="link6">
+    <inertial>
+      <origin xyz="-0.0244518842072319 0.0044011980329773 -0.0251861647177716" rpy="0 0 0"/>
+      <mass value="1.03161675931573"/>
+      <inertia ixx="0.0006708418969527" ixy="2.8448593510328e-06" ixz="2.92522270489149e-06" iyy="0.000528573927937" iyz="5.69299275373857e-05" izz="0.0005828899556653"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link6.STL"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link6.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint6" type="revolute">
+    <origin xyz="0.02725 0.063 0.0" rpy="0 0 0"/>
+    <parent link="link5"/>
+    <child link="link6"/>
+    <axis xyz="-1 0 0"/>
+    <limit lower="-10.0" upper="10.0" effort="100.0" velocity="1000.0"/>
+  </joint>
+  <transmission name="joint6_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint6">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint6_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="link7">
+    <inertial>
+      <origin xyz="0.0008277782957396 -0.0014836506723304 -0.105295191761956" rpy="0 0 0"/>
+      <mass value="0.736099125577072"/>
+      <inertia ixx="0.0004899288325508" ixy="-2.05675095209574e-06" ixz="-7.69099326539089e-05" iyy="0.000646591846182" iyz="-6.43068495409881e-06" izz="0.000432634218679"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link7.STL"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link7.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint7" type="revolute">
+    <origin xyz="-0.02725 0.0 -0.0865" rpy="0 0 0"/>
+    <parent link="link6"/>
+    <child link="link7"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="-10.0" upper="10.0" effort="100.0" velocity="1000.0"/>
+  </joint>
+  <transmission name="joint7_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint7">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint7_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="link8">
+    <inertial>
+      <origin xyz="0.0593724453089232 0.0253235620813382 -0.0125969681001941" rpy="0 0 0"/>
+      <mass value="0.487506795308259"/>
+      <inertia ixx="0.0002241404992158" ixy="7.95064368130842e-07" ixz="1.98295005442119e-05" iyy="0.0002698232182575" iyz="-2.49086103603691e-07" izz="0.0002513133394083"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link8.STL"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link8.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint8" type="revolute">
+    <origin xyz="0.0 -0.02725 -0.1435" rpy="0 0 0"/>
+    <parent link="link7"/>
+    <child link="link8"/>
+    <axis xyz="0 -1 0"/>
+    <limit lower="-10.0" upper="10.0" effort="100.0" velocity="1000.0"/>
+  </joint>
+  <transmission name="joint8_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint8">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint8_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="link9">
+    <inertial>
+      <origin xyz="0.0458969495196738 -0.0005355527554317 -9.66305755581987e-05" rpy="0 0 0"/>
+      <mass value="0.487431771518004"/>
+      <inertia ixx="0.0001964289661668" ixy="4.45478462747491e-06" ixz="-4.59861981451678e-07" iyy="0.0002231318750378" iyz="6.47105181852797e-07" izz="0.0001979414587427"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link9.STL"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link9.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint9" type="revolute">
+    <origin xyz="0.0945 0.02725 -0.015" rpy="0 0 0"/>
+    <parent link="link8"/>
+    <child link="link9"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="-10.0" upper="10.0" effort="100.0" velocity="1000.0"/>
+  </joint>
+  <transmission name="joint9_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint9">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint9_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="link10">
+    <inertial>
+      <origin xyz="0.0575036493913677 0.0264951119112793 0.0013588949305287" rpy="0 0 0"/>
+      <mass value="0.432944265521347"/>
+      <inertia ixx="0.0001459317648847" ixy="1.00190830777294e-06" ixz="4.92691372195089e-06" iyy="0.0001701628321674" iyz="3.06395685181585e-08" izz="0.0002185854109935"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link10.STL"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link10.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint10" type="revolute">
+    <origin xyz="0.05 -0.02725 0.0" rpy="0 0 0"/>
+    <parent link="link9"/>
+    <child link="link10"/>
+    <axis xyz="0 -1 0"/>
+    <limit lower="-10.0" upper="10.0" effort="100.0" velocity="1000.0"/>
+  </joint>
+  <transmission name="joint10_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint10">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint10_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="link11">
+    <inertial>
+      <origin xyz="0.0782374674886107 2.27688611500743e-05 0.0203907673011059" rpy="0 0 0"/>
+      <mass value="0.471847835335863"/>
+      <inertia ixx="0.0003876165178274" ixy="-1.18023848826379e-08" ixz="-9.89021196466862e-06" iyy="0.0001546229536541" iyz="1.64097386574672e-06" izz="0.000372115059946"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link11.STL"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link11.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint11" type="revolute">
+    <origin xyz="0.066 0.02725 -0.022" rpy="0 0 0"/>
+    <parent link="link10"/>
+    <child link="link11"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="-10.0" upper="10.0" effort="100.0" velocity="100.0"/>
+  </joint>
+  <transmission name="joint11_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint11">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint11_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="link12">
+    <inertial>
+      <origin xyz="-0.0003552225921417 -0.0078270385094938 -0.0029883167691533" rpy="0 0 0"/>
+      <mass value="0.0647981743053201"/>
+      <inertia ixx="1.9492104310027e-05" ixy="4.21666713769101e-06" ixz="-8.37272046628935e-07" iyy="2.24604680885518e-05" iyz="4.22457821769595e-07" izz="2.20344347581745e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link12.STL"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link12.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint12" type="prismatic">
+    <origin xyz="0.12737 0.024896 0.021756" rpy="0 0 0"/>
+    <parent link="link11"/>
+    <child link="link12"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0.0" upper="0.044" effort="100.0" velocity="1000.0"/>
+  </joint>
+  <transmission name="joint12_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint12">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint12_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="link13">
+    <inertial>
+      <origin xyz="-0.0003552234702767 0.0078276874106094 0.0024200565283248" rpy="0 0 0"/>
+      <mass value="0.0647981725781686"/>
+      <inertia ixx="1.98055189256273e-05" ixy="-4.21666700461345e-06" ixz="2.22082272456196e-06" iyy="2.27730012428807e-05" iyz="1.03056023605411e-06" izz="2.20353140631672e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link13.STL"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link13.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint13" type="prismatic">
+    <origin xyz="0.12737 -0.0249 0.021756" rpy="0 0 0"/>
+    <parent link="link11"/>
+    <child link="link13"/>
+    <axis xyz="0 -1 0"/>
+    <limit lower="0.0" upper="0.044" effort="100.0" velocity="1000.0"/>
+  </joint>
+  <transmission name="joint13_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint13">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint13_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="link14">
+    <inertial>
+      <origin xyz="0.0203118776657806 -0.0282074621926024 -0.0001728036753246" rpy="0 0 0"/>
+      <mass value="0.131891884746085"/>
+      <inertia ixx="0.0001222374924625" ixy="3.79784054979192e-05" ixz="-4.62936177981471e-07" iyy="9.03910908617515e-05" iyz="5.40326311415797e-07" izz="0.0001374888512206"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link14.STL"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link14.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint14" type="revolute">
+    <origin xyz="0.0 -0.0336 0.28" rpy="0 0 0"/>
+    <parent link="link2"/>
+    <child link="link14"/>
+    <axis xyz="0 -1 0"/>
+    <limit lower="-10.0" upper="10.0" effort="100.0" velocity="1000.0"/>
+  </joint>
+  <transmission name="joint14_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint14">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint14_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="link15">
+    <inertial>
+      <origin xyz="-0.0244518746422262 -0.0044011807283603 -0.0251861194488474" rpy="0 0 0"/>
+      <mass value="1.03161748745213"/>
+      <inertia ixx="0.0006708422458629" ixy="-2.84524257464318e-06" ixz="2.92563543090866e-06" iyy="0.0005285747359773" iyz="-5.69293769379821e-05" izz="0.0005828897419607"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link15.STL"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link15.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint15" type="revolute">
+    <origin xyz="0.02725 -0.063 0.0" rpy="0 0 0"/>
+    <parent link="link14"/>
+    <child link="link15"/>
+    <axis xyz="-1 0 0"/>
+    <limit lower="-10.0" upper="10.0" effort="100.0" velocity="1000.0"/>
+  </joint>
+  <transmission name="joint15_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint15">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint15_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="link16">
+    <inertial>
+      <origin xyz="0.0008277799701953 0.0014843542246373 -0.105295189564578" rpy="0 0 0"/>
+      <mass value="0.73609919110615"/>
+      <inertia ixx="0.0004899288384855" ixy="2.05377048048189e-06" ixz="-7.69099346030347e-05" iyy="0.0006465918558268" iyz="6.40760631461108e-06" izz="0.0004326342244942"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link16.STL"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link16.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint16" type="revolute">
+    <origin xyz="-0.02725 0.0 -0.0865" rpy="0 0 0"/>
+    <parent link="link15"/>
+    <child link="link16"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="-10.0" upper="10.0" effort="100.0" velocity="1000.0"/>
+  </joint>
+  <transmission name="joint16_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint16">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint16_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="link17">
+    <inertial>
+      <origin xyz="0.0593724456215453 -0.025323327171846 -0.0127286630831199" rpy="0 0 0"/>
+      <mass value="0.48750674832378"/>
+      <inertia ixx="0.0002241404839348" ixy="-7.9460685042193e-07" ixz="2.15020014605788e-05" iyy="0.0002698151991606" iyz="3.34569669737904e-07" izz="0.0002513211971459"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link17.STL"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link17.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint17" type="revolute">
+    <origin xyz="0.0 0.02725 -0.1435" rpy="0 0 0"/>
+    <parent link="link16"/>
+    <child link="link17"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-10.0" upper="10.0" effort="100.0" velocity="1000.0"/>
+  </joint>
+  <transmission name="joint17_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint17">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint17_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="link18">
+    <inertial>
+      <origin xyz="0.0458969709559334 0.0005355527554383 -2.35788959310756e-05" rpy="0 0 0"/>
+      <mass value="0.487431771518004"/>
+      <inertia ixx="0.0001964289661668" ixy="-4.4547949178527e-06" ixz="-3.27967783783114e-07" iyy="0.0002231318750378" iyz="-6.47105181858603e-07" izz="0.0001979414587427"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link18.STL"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link18.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint18" type="revolute">
+    <origin xyz="0.0945 -0.02725 -0.015" rpy="0 0 0"/>
+    <parent link="link17"/>
+    <child link="link18"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="-10.0" upper="10.0" effort="100.0" velocity="1000.0"/>
+  </joint>
+  <transmission name="joint18_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint18">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint18_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="link19">
+    <inertial>
+      <origin xyz="0.0575036493913393 -0.0265307053304072 0.0013589227481446" rpy="0 0 0"/>
+      <mass value="0.432944265521347"/>
+      <inertia ixx="0.0001459317648847" ixy="-9.34984041417126e-07" ixz="4.92667118376996e-06" iyy="0.0001701628321674" iyz="3.06395684970932e-08" izz="0.0002185854109935"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link19.STL"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link19.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint19" type="revolute">
+    <origin xyz="0.05 0.02725 0.0" rpy="0 0 0"/>
+    <parent link="link18"/>
+    <child link="link19"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-10.0" upper="10.0" effort="100.0" velocity="1000.0"/>
+  </joint>
+  <transmission name="joint19_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint19">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint19_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="link20">
+    <inertial>
+      <origin xyz="0.0782374674886106 2.27688611456334e-05 0.0203907673011835" rpy="0 0 0"/>
+      <mass value="0.471847835335862"/>
+      <inertia ixx="0.0003876165178274" ixy="-1.18023848866679e-08" ixz="-9.89021196466859e-06" iyy="0.0001546229536541" iyz="1.64097386593008e-06" izz="0.000372115059946"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link20.STL"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link20.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint20" type="revolute">
+    <origin xyz="0.066 -0.02725 -0.022" rpy="0 0 0"/>
+    <parent link="link19"/>
+    <child link="link20"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="-10.0" upper="10.0" effort="100.0" velocity="1000.0"/>
+  </joint>
+  <transmission name="joint20_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint20">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint20_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="link21">
+    <inertial>
+      <origin xyz="-0.000355222592142 -0.0078270385094939 -0.0029883167691534" rpy="0 0 0"/>
+      <mass value="0.0647981743053201"/>
+      <inertia ixx="1.9492104310027e-05" ixy="4.21666713769101e-06" ixz="-8.37272046628937e-07" iyy="2.24604680885518e-05" iyz="4.22457821769597e-07" izz="2.20344347581745e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link21.STL"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link21.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint21" type="prismatic">
+    <origin xyz="0.12737 0.024896 0.021756" rpy="0 0 0"/>
+    <parent link="link20"/>
+    <child link="link21"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0.0" upper="0.044" effort="100.0" velocity="1000.0"/>
+  </joint>
+  <transmission name="joint21_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint21">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint21_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="link22">
+    <inertial>
+      <origin xyz="-0.000355223470277 0.0078276874106094 0.0024200565283246" rpy="0 0 0"/>
+      <mass value="0.0647981725781687"/>
+      <inertia ixx="1.98055189256273e-05" ixy="-4.21666700461347e-06" ixz="2.22082272456198e-06" iyy="2.27730012428807e-05" iyz="1.03056023605411e-06" izz="2.20353140631673e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link22.STL"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://x7s_description/mesh/link22.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint22" type="prismatic">
+    <origin xyz="0.12737 -0.0249 0.021756" rpy="0 0 0"/>
+    <parent link="link20"/>
+    <child link="link22"/>
+    <axis xyz="0 -1 0"/>
+    <limit lower="0.0" upper="0.044" effort="100.0" velocity="1000.0"/>
+  </joint>
+  <transmission name="joint22_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint22">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint22_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
+  </gazebo>
+</robot>

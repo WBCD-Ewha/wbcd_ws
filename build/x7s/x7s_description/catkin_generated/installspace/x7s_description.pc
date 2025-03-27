@@ -1,0 +1,8 @@
+prefix=/home/glab/wbcd_ws/install
+
+Name: x7s_description
+Description: Description of x7s_description
+Version: 0.2.4
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

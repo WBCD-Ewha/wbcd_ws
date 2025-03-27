@@ -1,0 +1,41 @@
+<!-- -->
+<launch>
+  <arg name="init_pose" default="-x 1.0 -y 1.0 -z 0.0"/>
+  <!-- Load empty Gazebo world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+
+  <!-- Publish static transform -->
+  <node name="tf_footprint_base" pkg="tf" type="static_transform_publisher"
+        args="0 0 0 0 0 0 base_link base_footprint 40" />
+
+  <!-- Spawn robot from URDF -->
+  <param name="robot_description" textfile="$(find x7s_description)/urdf/x7s.urdf" />
+
+  <!-- Spawn the former in gazebo -->
+  <node pkg="gazebo_ros" type="spawn_model" name="urdf_spawner" output="screen" 
+        args="-urdf -model former $(arg init_pose) -param robot_description"/>
+
+  <!-- Load control parameters -->
+  <rosparam file="$(find x7s_control)/config/control.yaml" command="load" />
+
+  <!-- Start controllers -->
+  <node pkg="controller_manager" type="spawner" name="controller_spawner" output="screen"
+        args="x7s_joint_state_controller
+              joint1_position_controller joint2_position_controller joint3_position_controller
+              joint4_position_controller joint5_position_controller joint6_position_controller
+              joint7_position_controller joint8_position_controller joint9_position_controller
+              joint10_position_controller joint11_position_controller joint12_position_controller
+              joint13_position_controller joint14_position_controller joint15_position_controller
+              joint16_position_controller joint17_position_controller joint18_position_controller
+              joint19_position_controller joint20_position_controller joint21_position_controller
+              joint22_position_controller" />
+
+  <!-- Robot state publisher -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+    <param name="publish_frequency" type="double" value="50.0" />
+  </node>
+
+  <!-- Fake joint calibration -->
+  <node name="fake_joint_calibration" pkg="rostopic" type="rostopic"
+        args="pub /calibrated std_msgs/Bool true" />
+</launch>

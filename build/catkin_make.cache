@@ -1,0 +1,2 @@
+ARX_x7_ros/arx_x7_controller:arx_msg_ros/arm_control:arx_msg_ros/arx5_arm_msg:x7s/x7s_control:x7s/x7s_description:x7s_moveit_config
+-DCATKIN_DEVEL_PREFIX=/home/glab/wbcd_ws/devel -DCMAKE_INSTALL_PREFIX=/home/glab/wbcd_ws/install -G Unix Makefiles

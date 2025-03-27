@@ -1,0 +1,197 @@
+joint1_position_controller:
+  joint: joint1
+  pid:
+    d: 1.0
+    i: 0.01
+    p: 100.0
+  type: effort_controllers/JointPositionController
+joint2_position_controller:
+  joint: joint2
+  pid:
+    d: 1.0
+    i: 0.01
+    p: 100.0
+  type: effort_controllers/JointPositionController
+joint3_position_controller:
+  joint: joint3
+  pid:
+    d: 1.0
+    i: 0.01
+    p: 100.0
+  type: effort_controllers/JointPositionController
+joint4_position_controller:
+  joint: joint4
+  pid:
+    d: 1.0
+    i: 0.01
+    p: 100.0
+  type: effort_controllers/JointPositionController
+joint5_position_controller:
+  joint: joint5
+  pid:
+    d: 1.0
+    i: 0.01
+    p: 100.0
+  type: effort_controllers/JointPositionController
+joint6_position_controller:
+  joint: joint6
+  pid:
+    d: 1.0
+    i: 0.01
+    p: 100.0
+  type: effort_controllers/JointPositionController
+joint7_position_controller:
+  joint: joint7
+  pid:
+    d: 1.0
+    i: 0.01
+    p: 100.0
+  type: effort_controllers/JointPositionController
+joint8_position_controller:
+  joint: joint8
+  pid:
+    d: 1.0
+    i: 0.01
+    p: 100.0
+  type: effort_controllers/JointPositionController
+joint9_position_controller:
+  joint: joint9
+  pid:
+    d: 1.0
+    i: 0.01
+    p: 100.0
+  type: effort_controllers/JointPositionController
+joint10_position_controller:
+  joint: joint10
+  pid:
+    d: 1.0
+    i: 0.01
+    p: 100.0
+  type: effort_controllers/JointPositionController
+joint11_position_controller:
+  joint: joint11
+  pid:
+    d: 1.0
+    i: 0.01
+    p: 100.0
+  type: effort_controllers/JointPositionController
+joint12_position_controller:
+  joint: joint12
+  pid:
+    d: 1.0
+    i: 0.01
+    p: 100.0
+  type: effort_controllers/JointPositionController
+joint13_position_controller:
+  joint: joint13
+  pid:
+    d: 1.0
+    i: 0.01
+    p: 100.0
+  type: effort_controllers/JointPositionController
+joint14_position_controller:
+  joint: joint14
+  pid:
+    d: 1.0
+    i: 0.01
+    p: 100.0
+  type: effort_controllers/JointPositionController
+joint15_position_controller:
+  joint: joint15
+  pid:
+    d: 1.0
+    i: 0.01
+    p: 100.0
+  type: effort_controllers/JointPositionController
+joint16_position_controller:
+  joint: joint16
+  pid:
+    d: 1.0
+    i: 0.01
+    p: 100.0
+  type: effort_controllers/JointPositionController
+joint17_position_controller:
+  joint: joint17
+  pid:
+    d: 1.0
+    i: 0.01
+    p: 100.0
+  type: effort_controllers/JointPositionController
+joint18_position_controller:
+  joint: joint18
+  pid:
+    d: 1.0
+    i: 0.01
+    p: 100.0
+  type: effort_controllers/JointPositionController
+joint19_position_controller:
+  joint: joint19
+  pid:
+    d: 1.0
+    i: 0.01
+    p: 100.0
+  type: effort_controllers/JointPositionController
+joint20_position_controller:
+  joint: joint20
+  pid:
+    d: 1.0
+    i: 0.01
+    p: 100.0
+  type: effort_controllers/JointPositionController
+joint21_position_controller:
+  joint: joint21
+  pid:
+    d: 1.0
+    i: 0.01
+    p: 100.0
+  type: effort_controllers/JointPositionController
+joint22_position_controller:
+  joint: joint22
+  pid:
+    d: 1.0
+    i: 0.01
+    p: 100.0
+  type: effort_controllers/JointPositionController
+
+joint_state_controller:
+  publish_rate: 50
+  type: joint_state_controller/JointStateController
+  
+x7s_joint_state_controller:
+  base_frame_id: base_link
+  enable_odom_tf: false
+  odom_frame_id: odom
+  publish_rate: 50
+  type: joint_state_controller/JointStateController
+  
+ekf_localization_node:
+  base_link_frame: base_link
+  debug: false
+  frequency: 50
+  map_frame: map
+  odom_frame: odom
+  print_diagnostics: false
+  publish_acceleration: false
+  publish_tf: true
+  sensor_timeout: 0.1
+  two_d_mode: true
+  world_frame: odom
+  
+twist_mux:
+  topics:
+  - name: Joystick
+    priority: 100
+    timeout: 0.5
+    topic: teleop/cmd_vel
+  - name: Navigation
+    priority: 50
+    timeout: 0.5
+    topic: move_base/cmd_vel
+  - name: Docking
+    priority: 20
+    timeout: 0.5
+    topic: dock/cmd_vel
+  - name: External
+    priority: 10
+    timeout: 0.5
+    topic: cmd_vel
